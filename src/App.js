@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+export default function App() {
+
+  function headleAddTask() {
+    const input = document.querySelector('#input-task');
+    const ul = document.querySelector('ul');
+
+    if (!input.value) return;
+
+    const li = document.createElement('li');
+
+    li.appendChild(document.createTextNode(input.value));
+    ul.appendChild(li);
+
+    input.value = '';
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="text" placeholder="Adicionar tarefa" id="input-task"></input>
+      <button onClick={() => headleAddTask()}>
+        Adicionar
+      </button>
+      <ul>
+
+      </ul>
     </div>
   );
-}
+};
 
-export default App;
